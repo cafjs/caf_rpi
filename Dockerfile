@@ -22,7 +22,16 @@ RUN rm -fr /usr/lib/node_modules/npm
 #older npm versions do not work with qemu emulator
 RUN  curl -sL https://registry.npmjs.org/npm/-/npm-3.3.8.tgz > /tmp/npm-3.3.8.tgz; cd /tmp ; tar -zxvf npm-3.3.8.tgz; cd package;  ./cli.js config set unsafe-perm true; ./cli.js install -gf; cd ../; rm -fr package; rm -f npm-3.3.8.tgz 
 
+RUN mkdir -p /usr/src/app
 
+WORKDIR /usr/src/app
 
+ONBUILD COPY . /usr/src/app
+
+ONBUILD RUN rm -fr /usr/src/app/node_modules/*
+
+ONBUILD RUN npm install --production
+
+CMD [ "npm", "start" ]
 
 
