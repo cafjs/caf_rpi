@@ -30,7 +30,7 @@ ONBUILD COPY . /usr/src/app
 
 ONBUILD RUN rm -fr /usr/src/app/node_modules/*
 
-ONBUILD RUN npm install --production
+ONBUILD RUN . /usr/src/app/http_proxy_build;  npm install . ; npm run build
 
 CMD [ "npm", "start" ]
 
