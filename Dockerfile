@@ -25,6 +25,8 @@ RUN mkdir -p /usr/src/app
 
 WORKDIR /usr/src/app
 
+RUN npm install ws
+
 ONBUILD COPY . /usr/src/app
 
 ONBUILD RUN rm -fr /usr/src/app/node_modules/*
