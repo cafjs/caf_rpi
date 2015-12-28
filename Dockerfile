@@ -1,4 +1,4 @@
-# VERSION 0.1
+# VERSION 0.2
 # DOCKER-VERSION  1.7.0
 # AUTHOR:         Antonio Lain <antlai@cafjs.com>
 # DESCRIPTION:    Cloud Assistants Raspberry Pi 2 base image (armv7)
@@ -17,10 +17,7 @@ RUN curl -sL https://deb.nodesource.com/setup_0.10 | sudo -E bash -
 
 RUN apt-get install -y nodejs
 
-RUN rm -fr /usr/lib/node_modules/npm
-
-#npm 3.* uses a cleaner approach for deps...
-RUN  curl -sL https://registry.npmjs.org/npm/-/npm-3.3.8.tgz > /tmp/npm-3.3.8.tgz; cd /tmp ; tar -zxvf npm-3.3.8.tgz; cd package;  ./cli.js config set unsafe-perm true; ./cli.js install -gf; cd ../; rm -fr package; rm -f npm-3.3.8.tgz 
+RUN sudo npm install -g npm@v2 
 
 RUN sudo npm install -g node-gyp
 
@@ -32,7 +29,7 @@ ONBUILD COPY . /usr/src/app
 
 ONBUILD RUN rm -fr /usr/src/app/node_modules/*
 
-ONBUILD RUN  touch /usr/src/app/http_proxy_build ; . /usr/src/app/http_proxy_build;  npm install --production . ; npm run build
+ONBUILD RUN  touch /usr/src/app/http_proxy_build ; . /usr/src/app/http_proxy_build;  if test -f all.tgz; then tar xvf all.tgz; npm rebuild; fi; npm install --production . ; npm run build
 
 CMD [ "npm", "start" ]
 
