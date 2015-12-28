@@ -17,7 +17,7 @@ RUN curl -sL https://deb.nodesource.com/setup_0.10 | sudo -E bash -
 
 RUN apt-get install -y nodejs
 
-RUN sudo npm install -g npm@v2 
+RUN curl -sL https://registry.npmjs.org/npm/-/npm-2.14.15.tgz > /tmp/npm-2.14.15.tgz; cd /tmp ; tar -zxvf npm-2.14.15.tgz; cd package;  ./cli.js config set unsafe-perm true; ./cli.js install -gf; cd ../; rm -fr package; rm -f npm-2.14.15.tgz
 
 RUN sudo npm install -g node-gyp
 
