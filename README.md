@@ -6,3 +6,4 @@ See http://www.cafjs.com
 
 ## CAF bootstrapping for a Raspberry PI 2
 
+Creates a Docker base image for apps running on the Raspberry PI 2

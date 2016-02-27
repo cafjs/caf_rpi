@@ -6,26 +6,19 @@
 # TO_RUN:         docker run -p <app_port>:3000 -v /config:/config registry.cafjs.com:32000/root-rpi2armhf
 #
 
-FROM armv7/armhf-ubuntu:14.04
+FROM armhf/alpine:3.3
 
 COPY ./qemu-arm-static /usr/bin/
 
-RUN apt-get update && apt-get install -q -y \
-      curl git python make g++
-
-RUN curl -sL https://deb.nodesource.com/setup_0.10 | sudo -E bash -
-
-RUN apt-get install -y nodejs
+RUN apk add --update curl nodejs python make g++ && rm -rf /var/cache/apk/*
 
 RUN curl -sL https://registry.npmjs.org/npm/-/npm-2.14.15.tgz > /tmp/npm-2.14.15.tgz; cd /tmp ; tar -zxvf npm-2.14.15.tgz; cd package;  ./cli.js config set unsafe-perm true; ./cli.js install -gf; cd ../; rm -fr package; rm -f npm-2.14.15.tgz
-
-RUN sudo npm install -g node-gyp
 
 RUN mkdir -p /usr/src/app
 
 WORKDIR /usr/src/app
 
-RUN npm install ws
+RUN npm install bignum; rm -fr node_modules/bignum
 
 ONBUILD COPY . /usr/src/app
 
