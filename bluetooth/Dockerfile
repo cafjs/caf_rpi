@@ -24,6 +24,8 @@ WORKDIR /usr/src/app
 
 RUN npm install bignum; rm -fr node_modules/bignum
 
+RUN apt-get install -y sudo
+
 ONBUILD COPY . /usr/src/app
 
 ONBUILD RUN   rm -fr /usr/src/app/node_modules/* ; touch /usr/src/app/http_proxy_build ; . /usr/src/app/http_proxy_build;  if test -f all.tgz; then tar zxvf all.tgz; npm rebuild; fi; npm install --production . ; npm run build
