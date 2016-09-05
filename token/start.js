@@ -34,8 +34,8 @@ async.waterfall([
                 'https://root-accounts.cafjs.com',
             password: process.env.PASSWD || 'pleasechange',
             myId: process.env.MY_ID || 'foo-device1',
-            appPublisher: process.env.APP_PUBLISHER||'gadget',
-            appLocalName: process.env.APP_LOCAL_NAME || 'root'
+            appPublisher: process.env.APP_PUBLISHER||'root',
+            appLocalName: process.env.APP_LOCAL_NAME || 'gadget'
         }, cb1);
     },
     function(token, cb1) {
