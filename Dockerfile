@@ -10,7 +10,7 @@ FROM armhf/alpine:3.3
 
 COPY ./qemu-arm-static /usr/bin/
 
-RUN apk add --update curl nodejs python make g++ linux-headers && rm -rf /var/cache/apk/*
+RUN apk add --update curl nodejs python git make g++ linux-headers && rm -rf /var/cache/apk/*
 
 RUN curl -sL https://registry.npmjs.org/npm/-/npm-2.14.15.tgz > /tmp/npm-2.14.15.tgz; cd /tmp ; tar -zxvf npm-2.14.15.tgz; cd package;  ./cli.js config set unsafe-perm true; ./cli.js install -gf; cd ../; rm -fr package; rm -f npm-2.14.15.tgz
 
@@ -27,5 +27,3 @@ ONBUILD RUN rm -fr /usr/src/app/node_modules/*
 ONBUILD RUN  touch /usr/src/app/http_proxy_build ; . /usr/src/app/http_proxy_build;  if test -f all.tgz; then tar zxvf all.tgz; npm rebuild; fi; npm install --production . ; npm run build
 
 CMD [ "npm", "start" ]
-
-

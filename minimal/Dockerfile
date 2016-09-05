@@ -10,7 +10,7 @@ FROM armhf/alpine:3.3
 
 COPY ./qemu-arm-static /usr/bin/
 
-RUN apk add --update nodejs && rm -rf /var/cache/apk/*
+RUN apk add --update git nodejs && rm -rf /var/cache/apk/*
 
 RUN mkdir -p /usr/src/app
 
