@@ -1,0 +1,19 @@
+{
+    "name": "caf_rpi",
+    "description": "Cloud Assistant library RPi installer",
+    "version": "0.2.1",
+    "author": "Antonio Lain <antlai@cafjs.com>",
+    "devDependencies": {
+        "jsdoc": "^3.4.2"
+    },
+    "main": "index",
+    "homepage": "http://www.cafjs.com",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/cafjs/caf_rmi.git"
+    },
+    "scripts": {
+        "docs" : "rm -fr docs; mkdir -p docs; ./node_modules/.bin/jsdoc --pedantic -c ./conf.json -d docs docs.js --readme ./README.md --package ./package.json"
+    },
+    "engines": { "node": ">= 0.10.1 " }
+}

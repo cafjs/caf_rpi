@@ -1,21 +1,25 @@
-# CAF (Cloud Assistant Framework)
+# CAF.js (Cloud Assistant Framework)
 
-Co-design permanent, active, stateful, reliable cloud proxies with your web app.
+Co-design permanent, active, stateful, reliable cloud proxies with your web app and gadgets.
 
 See http://www.cafjs.com
 
-## CAF bootstrapping for a Raspberry PI 2/3
+## Bootstrapping a Raspberry Pi 2/3
 
-Sets-up a Raspberry PI 2/3 to be used with CAF.
+Setting up a RPi2 or RPi3 for running CAF.js applications is easy.
 
-Starting with an up to date raspbian image, install docker using:
+Start with an up to date raspbian image, install Docker with:
 
     curl -sSL https://get.docker.com | sh
 
-then, after creating a cloud account, e.g., for user `foo`,  and an instance of the `root-gadget` app for device `foo-device1`, execute in the RPi:
+Register for a cloud account in https://root-launcher.cafjs.com with user, e.g., `bar`. Create a CA instance of the `root-gadget` app to manage the device `bar-device1`. See  {@link external:caf} (https://cafjs.github.io/api/caf) and {@link external:caf_dcinabox} (https://cafjs.github.io/api/caf_dcinabox) for details.
 
-    curl -sSL  https://raw.githubusercontent.com/cafjs/caf_rpi/master/setup.sh | bash -s -- foo-device1 pleasechange
+Then, execute in the RPi:
 
-where `foo-device1` is the identifier of the  device and `pleasechange` the password to login in the cloud for user `foo`.
+    curl -sSL  https://raw.githubusercontent.com/cafjs/caf_rpi/master/setup.sh | bash -s -- bar-device1 pleasechange
+
+where `bar-device1` is the identifier of the  device, and `pleasechange` the cloud service password for user `bar`. After the setup is done, only a restricted authentication token will be kept in the device. To clear the shell history (with your password):
+
+    history -c && history -w
 
 Deployment of device apps and tokens is now managed by the `root-gadget` app.
