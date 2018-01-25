@@ -3,27 +3,25 @@
 # AUTHOR:         Antonio Lain <antlai@cafjs.com>
 # DESCRIPTION:    Cloud Assistants Raspberry Pi 2 base image (armv7)
 # TO_BUILD:       docker build --rm -t registry.cafjs.com:32000/root-rpi2armhf .
-# TO_RUN:         docker run -p <app_port>:3000 -v /config:/config registry.cafjs.com:32000/root-rpi2armhf
+# TO_RUN:         base image
 #
 
-FROM armhf/alpine:3.3
+FROM arm32v6/node:8-alpine
 
 COPY ./qemu-arm-static /usr/bin/
 
-RUN apk add --update curl nodejs python git make g++ linux-headers && rm -rf /var/cache/apk/*
+RUN apk add --update --no-cache make gcc g++ python linux-headers
 
-RUN curl -sL https://registry.npmjs.org/npm/-/npm-2.14.15.tgz > /tmp/npm-2.14.15.tgz; cd /tmp ; tar -zxvf npm-2.14.15.tgz; cd package;  ./cli.js config set unsafe-perm true; ./cli.js install -gf; cd ../; rm -fr package; rm -f npm-2.14.15.tgz
+ENV PATH="/usr/src/node_modules/.bin:${PATH}"
 
-RUN mkdir -p /usr/src/app
+RUN mkdir -p /usr/src
 
 WORKDIR /usr/src/app
 
-RUN npm install bignum; rm -fr node_modules/bignum
+ONBUILD COPY . /usr/src
 
-ONBUILD COPY . /usr/src/app
+ONBUILD RUN  cd /usr/src/app && yarn install  --production --ignore-optional && cafjs build && yarn cache clean
 
-ONBUILD RUN rm -fr /usr/src/app/node_modules/*
+ENTRYPOINT ["node"]
 
-ONBUILD RUN  touch /usr/src/app/http_proxy_build ; . /usr/src/app/http_proxy_build;  if test -f all.tgz; then tar zxvf all.tgz; npm rebuild; fi; npm install --production . ; npm run build
-
-CMD [ "npm", "start" ]
+CMD [ "./index.js" ]

@@ -1,11 +1,11 @@
 {
     "name": "caf_rpitoken",
     "description": "CAF tool to provision tokens.",
-    "version": "0.2.1",
+    "version": "0.3.0",
     "author": "Antonio Lain <antlai@cafjs.com>",
     "dependencies": {
-        "caf_core": "^0.2.0",
-        "caf_srp": "^0.2.0"
+        "caf_core": "^0.3.0",
+        "caf_srp": "^0.3.0"
     },
     "devDependencies": {
     },

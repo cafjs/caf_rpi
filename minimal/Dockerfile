@@ -1,25 +1,25 @@
 # VERSION 0.2
 # DOCKER-VERSION  1.7.0
 # AUTHOR:         Antonio Lain <antlai@cafjs.com>
-# DESCRIPTION:    Cloud Assistants Raspberry Pi 2 minimal base image (armv7)
+# DESCRIPTION:    Cloud Assistants Raspberry Pi 2 minimal base image (armv6)
 # TO_BUILD:       docker build --rm -t registry.cafjs.com:32000/root-rpi2minimalarmhf .
 # TO_RUN:         base image
 #
 
-FROM armhf/alpine:3.3
+FROM arm32v6/node:8-alpine
 
 COPY ./qemu-arm-static /usr/bin/
 
-RUN apk add --update git nodejs && rm -rf /var/cache/apk/*
+ENV PATH="/usr/src/node_modules/.bin:${PATH}"
 
-RUN mkdir -p /usr/src/app
+RUN mkdir -p /usr/src
 
 WORKDIR /usr/src/app
 
-ONBUILD COPY . /usr/src/app
+ONBUILD COPY . /usr/src
 
-ONBUILD RUN rm -fr /usr/src/app/node_modules/*
+ONBUILD RUN  cd /usr/src/app && yarn install  --production --ignore-optional && cafjs build && yarn cache clean
 
-ONBUILD RUN  touch /usr/src/app/http_proxy_build ; . /usr/src/app/http_proxy_build;  if test -f all.tgz; then tar zxvf all.tgz; npm rebuild; fi; npm install --production . ; npm run build
+ENTRYPOINT ["node"]
 
-CMD [ "npm", "start" ]
+CMD [ "./index.js" ]
