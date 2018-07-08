@@ -2,7 +2,7 @@
 # DOCKER-VERSION  1.7.0
 # AUTHOR:         Antonio Lain <antlai@cafjs.com>
 # DESCRIPTION:    Cloud Assistants Raspberry Pi 2 minimal base image (armv6)
-# TO_BUILD:       docker build --rm -t registry.cafjs.com:32000/root-rpi2minimalarmhf .
+# TO_BUILD:       docker build --rm -t gcr.io/cafjs-k8/root-rpi2minimalarmhf .
 # TO_RUN:         base image
 #
 
