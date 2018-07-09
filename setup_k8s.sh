@@ -17,4 +17,4 @@ chmod 600 token
 popd #/config
 
 docker rm -f root-rpidaemon || true
-docker run -d --name=root-rpidaemon --restart=always -e DOCKERFILE_PRIVILEGED_TEMPLATE=DockerfilePrivileged.template.k8s -e DOCKERFILE_TEMPLATE=Dockerfile.template.k8s -e IS_REGISTRY_PRIVATE=false -e APP_SUFFIX=uhdia.com -e MY_ID="$1" -v /var/run/docker.sock:/var/run/docker.sock  -v /config:/config  -e CONFIG_VOLUME=/config gcr.io/cafjs-k8/root-rpidaemon
+docker run -d --name=root-rpidaemon --restart=always -e IS_REGISTRY_PRIVATE=false -e APP_SUFFIX=uhdia.com -e MY_ID="$1" -v /var/run/docker.sock:/var/run/docker.sock  -v /config:/config  -e CONFIG_VOLUME=/config gcr.io/cafjs-k8/root-rpidaemon
