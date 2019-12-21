@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 'use strict';
-var caf_core = require('caf_core');
-var myUtils = caf_core.caf_components.myUtils;
-var caf_cli = caf_core.caf_cli;
-var async = caf_core.async;
-var json_rpc = caf_core.caf_transport.json_rpc;
+var caf_components = require('caf_components');
+var myUtils = caf_components.myUtils;
+var caf_cli = require('caf_cli');
+var async = caf_components.async;
+var json_rpc = require('caf_transport').json_rpc;
 var srpClient = require('caf_srp').client;
 var fs = require('fs');
 var path = require('path');

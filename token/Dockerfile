@@ -6,11 +6,9 @@
 # TO_RUN:         docker run --rm -e MY_ID="$1" -e PASSWD="$2" -v /config:/config gcr.io/cafjs-k8/root-rpitoken
 #
 
-FROM arm32v6/node:10-alpine
+FROM arm32v7/node:12
 
 COPY ./qemu-arm-static /usr/bin/
-
-RUN apk add --update --no-cache git make gcc g++ python linux-headers
 
 ENV PATH="/usr/src/node_modules/.bin:${PATH}"
 

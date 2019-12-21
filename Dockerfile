@@ -6,11 +6,9 @@
 # TO_RUN:         base image
 #
 
-FROM arm32v6/node:10-alpine
+FROM arm32v7/node:12
 
 COPY ./qemu-arm-static /usr/bin/
-
-RUN apk add --update --no-cache make gcc g++ python linux-headers
 
 ENV PATH="/usr/src/node_modules/.bin:${PATH}"
 
@@ -20,7 +18,7 @@ WORKDIR /usr/src/app
 
 ONBUILD COPY . /usr/src
 
-ONBUILD RUN  cd /usr/src/app && yarn install  --production --ignore-optional && cafjs build && yarn cache clean
+ONBUILD RUN  cd /usr/src/app && yarn install  --production --ignore-optional && yarn run build && yarn cache clean
 
 ENTRYPOINT ["node"]
 
