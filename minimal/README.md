@@ -1,1 +1,1 @@
-Minimal base image for applications that do not have to install node.js packages with native extensions.
+Minimal base image for applications that do not install node.js packages with native extensions.

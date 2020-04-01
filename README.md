@@ -1,20 +1,22 @@
-# CAF.js (Cloud Assistant Framework)
+# Caf.js
 
 Co-design permanent, active, stateful, reliable cloud proxies with your web app and gadgets.
 
-See http://www.cafjs.com
+See https://www.cafjs.com
 
-## Bootstrapping a Raspberry Pi 2/3
+## Bootstrapping a Raspberry Pi 2/3/4
 
-Setting up a RPi2 or RPi3 for running CAF.js applications is easy.
+Setting up a Raspberry Pi for running `Caf.js` applications is easy.
 
 Start with an up to date raspbian image, install Docker with:
 
     curl -sSL https://get.docker.com | sh
 
-Register for a cloud account in https://root-launcher.cafjs.com with user, e.g., `bar`. Create a CA instance of the `root-gadget` app to manage the device `bar-device1`. See  {@link external:caf} (https://cafjs.github.io/api/caf) and {@link external:caf_dcinabox} (https://cafjs.github.io/api/caf_dcinabox) for details.
+Sign up for a cloud account in https://root-launcher.cafjs.com with user, e.g., `bar`.
 
-Then, execute in the RPi:
+And now, to register your device with name, e.g., `device1`, login and create a CA instance of the `root-gadget` app to manage the device `bar-device1`. See  {@link external:caf} (https://cafjs.github.io/api/caf) and {@link external:caf_dcinabox} (https://cafjs.github.io/api/caf_dcinabox) for details.
+
+Finally, in the RPi:
 
     curl -sSL  https://raw.githubusercontent.com/cafjs/caf_rpi/master/setup.sh | bash -s -- bar-device1 pleasechange
 

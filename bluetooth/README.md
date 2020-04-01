@@ -1,9 +1,9 @@
-# CAF (Cloud Assistant Framework)
+# Caf.js
 
 Co-design permanent, active, stateful, reliable cloud proxies with your web app.
 
-See http://www.cafjs.com
+See https://www.cafjs.com
 
-##  CAF bootstrapping for a Raspberry PI 2
+##  Caf.js bootstrapping for a Raspberry PI 2/3/4
 
 Creates a docker base image that includes bluetooth tools
