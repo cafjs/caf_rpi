@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-docker pull arm32v7/node:12
+docker pull arm32v7/node:12.13.1
 docker pull gcr.io/cafjs-k8/root-rpidaemon
 docker pull gcr.io/cafjs-k8/root-rpi2armhf
 docker pull gcr.io/cafjs-k8/root-rpi2bluearmhf
