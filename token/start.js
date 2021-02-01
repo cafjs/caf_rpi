@@ -16,7 +16,7 @@ var newToken = function(settings, cb) {
         accountsURL: settings.accountsURL,
         password: settings.password,
         from: settings.myId,
-//        durationInSec: settings.durationInSec,
+//       durationInSec: settings.durationInSec,
         appLocalName: settings.appLocalName,
         appPublisher: settings.appPublisher,
         unrestrictedToken: false
