@@ -5,7 +5,8 @@
     "author": "Antonio Lain <antlai@cafjs.com>",
     "license": "Apache-2.0",
     "devDependencies": {
-        "jsdoc": "^3.4.2"
+        "jsdoc": "^3.4.2",
+        "docdash": "^1.2.0"
     },
     "main": "index",
     "homepage": "http://www.cafjs.com",
