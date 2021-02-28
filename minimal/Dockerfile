@@ -6,7 +6,7 @@
 # TO_RUN:         base image
 #
 
-FROM arm32v6/node:12-alpine
+FROM arm32v6/node:14-alpine
 
 COPY ./qemu-arm-static /usr/bin/
 
