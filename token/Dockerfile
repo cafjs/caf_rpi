@@ -6,7 +6,7 @@
 # TO_RUN:         docker run --rm -e MY_ID="$1" -e PASSWD="$2" -v /config:/config gcr.io/cafjs-k8/root-rpitoken
 #
 
-FROM arm32v7/node:16
+FROM arm32v7/node:18
 
 COPY ./qemu-arm-static /usr/bin/
 
